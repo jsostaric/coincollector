@@ -1,0 +1,3 @@
+cd c:\xampp\mysql\bin
+mysql -ujurica -pJura10os --default_character_set=utf8 < "C:\xampp\htdocs\coincollector\coin.sql"
+
