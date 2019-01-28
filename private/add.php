@@ -1,4 +1,8 @@
-<?php include_once "../config.php"; checkLogin(); ?>
+<?php include_once "../config.php"; checkLogin(); 
+
+
+
+?>
 
 <!DOCTYPE html>
 <html>

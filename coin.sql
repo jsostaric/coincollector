@@ -1,16 +1,16 @@
-drop database if exists coin;
-create database coin default character set utf8;
-use coin;
+#drop database if exists coin;
+#create database coin default character set utf8;
+#use coin;
 
 #UTF8 NA SERVERU
-#alter database default character set utf8;
+alter database default character set utf8;
 
 create table cc(
 id int not null primary key auto_increment,
 user int not null,
 denomination decimal(4,2) not null,
-amount int default(0),
-total int default(0)
+amount int default 0,
+total int default 0
 );
 
 create table user(

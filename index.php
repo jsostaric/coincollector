@@ -1,9 +1,7 @@
-
-
 <?php include_once "config.php"; ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<?php include_once "templates/_head.php"; ?>
 </head>
@@ -28,7 +26,8 @@
 				
 				</div>
 			</div>
-			
+			<hr>
+			<?php include_once "templates/_footer.php"; ?>
 		</div>
 	</div>
 

@@ -4,23 +4,28 @@ session_start();
 
 include_once "function.php";
 
+$produkacija=$_SERVER["HTTP_HOST"]!="localhost";
+
 $title = "CoinCollector";
 
+
 if($_SERVER["HTTP_HOST"] == "localhost") {
-	$route = "/CoinCollector/";
-	$mysqlHost = "localhost";
-	$mysqlDB ="coin";
-	$mysqlUser ="jurica";
-	$mysqlPass = "Jura10os";
-} else if($_SERVER["HTTP_HOST"] == "jsostaric.byethost32.com"){
-	$route = "/CoinCollector/";
-	$mysqlHost = "vidjeti na serveru";
-	$mysqlDB ="vidjeti na serveru";
-	$mysqlUser =" b32_23293043";
-	$mysqlPass = "Jura10os";
-}else {
+	$route = "/coincollector/";
+	$mysqlHost="localhost";
+	$mysqlDB="coin";
+	$mysqlUser="jurica";
+	$mysqlPass="Jura10os";
+} else if($_SERVER["HTTP_HOST"] == "jsostaric.byethost32.com") {
+	$route = "/coincollector/";
+	$mysqlHost="sql212.byethost.com";
+	$mysqlDB="b32_23293043_coin";
+	$mysqlUser="b32_23293043";
+	$mysqlPass="Jura10os";
+} else {
 	$route = "/";
 }
+
+
 
 
 try{
