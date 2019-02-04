@@ -1,7 +1,4 @@
 <?php include_once "../config.php"; checkLogin(); 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -27,19 +24,21 @@
 		<div class="row">
 			<div class="col-md-8 offset-md-4">
 				<form method="post">
-					<?php $query = "select id, denomination, amount, total from cc where user = :id";
-						$stmt = $conn->prepare($query);
-						$stmt->execute(array("id"=> $_SESSION["session"]->id));
-						$result = $stmt->fetchAll(PDO::FETCH_OBJ);  ?>
-
 					<div class="form-row">
 					    <div class="form-group col-md-1">
 					      
-					      <select class="custom-select" id="inputGroupSelect01">
-						 	<option selected>Choose...</option>
-						 	<?php foreach ($result as $row): ?>
+					      <select name="denomination" class="custom-select" id="inputGroupSelect01">
+						 	<option selected value="0">Choose...</option>
+						 	<?php 	$query = "select * from cc where user = :id";
+									$stmt = $conn->prepare($query);
+									$stmt->execute(array("id"=> $_SESSION["session"]->id));
+									$result = $stmt->fetchAll(PDO::FETCH_OBJ);  
+
+
+						 	 foreach ($result as $row): ?>
 						    
-						    <option value="<?php $row->id; ?>"><?php echo $row->denomination; ?></option>
+						    <option value="<?php echo $row->id; ?>"><?php echo $row->denomination; ?></option>
+
 						    <?php endforeach;  ?>
 					  		</select>
 					    </div>
@@ -53,13 +52,39 @@
 					    </div>
 
 					    <div class="form-group col-md-2">
-					      <input type="submit" class="btn btn-primary" value="Add" />
+					      <input type="submit" class="btn btn-primary" name="add" value="Add" />
 					    </div>
 					  </div>
 
-					  
-								  
-					
+					 <?php
+					 // prvo dohvatimo sve iz forme. submit mora imati name  
+					 if(isset($_POST["add"])) {
+					 	$query = "select * from cc where id=:id"; 
+
+					 	$stmt= $conn->prepare($query);
+					 	$stmt->execute(array("id" => $_POST["denomination"] )); //trazimo samo odredjeni red
+
+					 	//dohvacamo samo jedan red koji zelimo izmjeniti. ta imamo iznos u bazi kojemu mozemo
+					 	// dodati iznos
+					 	$row = $stmt->fetch(PDO::FETCH_OBJ); 
+						
+						
+					 	$total = $row->total + $_POST["total"];
+
+					 	$amount = $total / $row->denomination;
+
+					 	$stmt = $conn->prepare("update cc set user=:user,denomination = :denomination, amount = :amount, total = :total  where id=:id");
+					 	$stmt->execute(array("user" => $row->user,
+					 		"amount" => $amount,
+					 		"denomination" => $row->denomination,
+					 		"total" => $total,
+					 		"id" => $_POST["denomination"]
+
+					 		));
+					 	
+					 	}
+
+					?>
 				</form>
 			</div>
 		</div> <!-- end of second row -->

@@ -48,7 +48,7 @@
 				</form>
 			</div>
 		</div>
-	</div>
+	</div> <!-- end of container -->
 	
 
 	<?php include_once "../templates/_script.php";   ?>
