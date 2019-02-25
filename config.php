@@ -13,14 +13,14 @@ if($_SERVER["HTTP_HOST"] == "localhost") {
 	$route = "/coincollector/";
 	$mysqlHost="localhost";
 	$mysqlDB="coin";
-	$mysqlUser="jurica";
-	$mysqlPass="Jura10os";
+	$mysqlUser="root";
+	$mysqlPass="";
 } else if($_SERVER["HTTP_HOST"] == "jsostaric.byethost32.com") {
 	$route = "/coincollector/";
 	$mysqlHost="sql212.byethost.com";
 	$mysqlDB="b32_23293043_coin";
 	$mysqlUser="b32_23293043";
-	$mysqlPass="Jura10os";
+	$mysqlPass="jurica";
 } else {
 	$route = "/";
 }
