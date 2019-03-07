@@ -10,7 +10,7 @@ id int not null primary key auto_increment,
 user int not null,
 denomination decimal(4,2) not null,
 amount int default 0,
-total int default 0
+total decimal(10,2) default 0
 );
 
 create table user(
