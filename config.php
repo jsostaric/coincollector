@@ -16,7 +16,7 @@ if($_SERVER["HTTP_HOST"] == "localhost") {
 	$mysqlUser="root";
 	$mysqlPass="";
 } else if($_SERVER["HTTP_HOST"] == "jsostaric.byethost32.com") {
-	$route = "/coincollector/";
+	$route = "/CoinCollector/";
 	$mysqlHost="sql212.byethost.com";
 	$mysqlDB="b32_23293043_coin";
 	$mysqlUser="b32_23293043";
